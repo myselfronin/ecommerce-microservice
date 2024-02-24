@@ -10,5 +10,7 @@ namespace Ecommerce.Web.Services.IService
         Task<ResponseDto?> RemoveFromCartAsync(int cartDetailsId);
         Task<ResponseDto?> ApplyCouponAsync(CartDto cartDto);
 
+        Task<ResponseDto?> EmailCart(CartDto cartDto);
+
     }
 }

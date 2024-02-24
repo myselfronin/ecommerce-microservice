@@ -1,4 +1,5 @@
 using AutoMapper;
+using Ecommerce.MessageBus;
 using Ecommerce.Services.ShoppingCartAPI;
 using Ecommerce.Services.ShoppingCartAPI.Data;
 using Ecommerce.Services.ShoppingCartAPI.Extensions;
@@ -32,6 +33,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<ICouponService, CouponService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<BackendApiAuthenticationHttpClientHandler>();
