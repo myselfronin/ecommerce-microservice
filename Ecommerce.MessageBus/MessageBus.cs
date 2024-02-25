@@ -14,17 +14,17 @@ namespace Ecommerce.MessageBus
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.jsonl", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables();
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             _configuration = builder.Build();
 
-            _connectionString = _configuration.GetConnectionString("ServiceBusConnectionString");
+            //_connectionString = _configuration["ServiceBusConnectionString"];
+            _connectionString = "Endpoint=sb://ecommerceweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=eAJdGiy1MEIoITBx0bTBC7hiUbvcfVy5o+ASbH89nks=";
         }
 
         public async Task PublishMessage(object message, string topic_queue_Name)
         {
-           await using var client = new ServiceBusClient(_connectionString);
+            await using var client = new ServiceBusClient(_connectionString);
 
             ServiceBusSender sender = client.CreateSender(topic_queue_Name);
 

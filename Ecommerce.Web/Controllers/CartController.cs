@@ -44,10 +44,14 @@ namespace Ecommerce.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                 TempData["success"] = "Cart updated successfully";
-                return RedirectToAction(nameof(CartIndex));
+                
+            } 
+            else
+            {
+                TempData["error"] = "Faield to apply coupon";
             }
 
-            return View();
+            return RedirectToAction(nameof(CartIndex));
         }
 
         public async Task<IActionResult> RemoveCoupon(CartDto cartDto)
@@ -58,10 +62,14 @@ namespace Ecommerce.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                 TempData["success"] = "Cart updated successfully";
-                return RedirectToAction(nameof(CartIndex));
             }
+            else
+            {
+                TempData["error"] = "Failed to remove coupon";
+            }
+            
+            return RedirectToAction(nameof(CartIndex));
 
-            return View();
         }
 
         public async Task<IActionResult> EmailCart(CartDto cartDto)
@@ -74,10 +82,13 @@ namespace Ecommerce.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                 TempData["success"] = "Email will be processed and sent shortly.";
-                return RedirectToAction(nameof(CartIndex));
+            } else
+            {
+                TempData["error"] = "Failed to send email";
             }
 
-            return View();
+            return RedirectToAction(nameof(CartIndex));
+
         }
 
         private async Task<CartDto> LoadCartDtoBasedOnLoggedInUser()
