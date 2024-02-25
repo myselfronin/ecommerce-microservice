@@ -1,4 +1,5 @@
 ﻿using Azure.Messaging.ServiceBus;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -7,10 +8,23 @@ namespace Ecommerce.MessageBus
 {
     public class MessageBus : IMessageBus
     {
-        private string connectionString = "Endpoint=sb://ecommerceweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=eAJdGiy1MEIoITBx0bTBC7hiUbvcfVy5o+ASbH89nks=";
+        private readonly IConfiguration _configuration;
+        private readonly string _connectionString;
+        public MessageBus()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.jsonl", optional: false, reloadOnChange: true)
+                .AddEnvironmentVariables();
+
+            _configuration = builder.Build();
+
+            _connectionString = _configuration.GetConnectionString("ServiceBusConnectionString");
+        }
+
         public async Task PublishMessage(object message, string topic_queue_Name)
         {
-           await using var client = new ServiceBusClient(connectionString);
+           await using var client = new ServiceBusClient(_connectionString);
 
             ServiceBusSender sender = client.CreateSender(topic_queue_Name);
 
