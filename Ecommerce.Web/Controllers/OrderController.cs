@@ -17,6 +17,7 @@ namespace Ecommerce.Web.Controllers
             _orderService = orderService;
         }
 
+        [Authorize]
         public IActionResult OrderIndex()
         {
             return View();
