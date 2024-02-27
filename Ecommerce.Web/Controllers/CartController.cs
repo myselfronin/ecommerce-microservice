@@ -11,14 +11,21 @@ namespace Ecommerce.Web.Controllers
     public class CartController : Controller
     {
         private readonly ICartService _cartService;
-
-        public CartController(ICartService cartService)
+        private readonly IOrderService _orderService;
+        public CartController(ICartService cartService, IOrderService orderService)
         {
             _cartService = cartService;
+            _orderService = orderService;
         }
 
         [Authorize]
         public async Task<IActionResult> CartIndex()
+        {
+            return View(await LoadCartDtoBasedOnLoggedInUser());
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Checkout()
         {
             return View(await LoadCartDtoBasedOnLoggedInUser());
         }
@@ -89,6 +96,31 @@ namespace Ecommerce.Web.Controllers
 
             return RedirectToAction(nameof(CartIndex));
 
+        }
+
+        [HttpPost]
+        [ActionName("Checkout")]
+        public async Task<IActionResult> Checkout(CartDto cartDto)
+        {
+            CartDto cart = await LoadCartDtoBasedOnLoggedInUser();
+            cart.CartHeader.Name = cartDto.CartHeader.Name;
+            cart.CartHeader.Email = cartDto.CartHeader.Email;
+            cart.CartHeader.Phone = cartDto.CartHeader.Phone;
+
+            var response = await _orderService.CreateOrder(cart);
+            OrderHeaderDto orderHeaderDto = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(response.Result));
+
+            if (response != null && response.IsSuccess)
+            {
+                TempData["success"] = "Order created successfully";
+                // TODO integrate payment 
+            }
+            else
+            {
+                TempData["error"] = "Failed to create order";
+            }
+
+            return RedirectToAction(nameof(CartIndex));
         }
 
         private async Task<CartDto> LoadCartDtoBasedOnLoggedInUser()

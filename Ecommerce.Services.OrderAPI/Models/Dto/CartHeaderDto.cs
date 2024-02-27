@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Ecommerce.Services.Web.Models.Dto
+﻿namespace Ecommerce.Services.OrderAPI.Models.Dto
 {
     public class CartHeaderDto
     {
@@ -9,11 +7,8 @@ namespace Ecommerce.Services.Web.Models.Dto
         public string? CouponCode { get; set; }
         public double Discount { get; set; }
         public double CartTotal { get; set; }
-        [Required]
         public string? Email { get; set; }
-        [Required]
+        public string? Phone { get; set; }
         public string? Name { get; set; }
-        [Required]
-        public string? Phone { get; set; }  
     }
 }

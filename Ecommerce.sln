@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Services.ProductA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Services.ShoppingCartAPI", "Ecommerce.Services.ShoppingCartAPI\Ecommerce.Services.ShoppingCartAPI.csproj", "{D7478337-27D1-4FAE-8EB5-1DD83E9190CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.MessageBus", "Ecommerce.MessageBus\Ecommerce.MessageBus.csproj", "{6582EFC7-7331-45D7-8732-D9D85C823B19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.MessageBus", "Ecommerce.MessageBus\Ecommerce.MessageBus.csproj", "{6582EFC7-7331-45D7-8732-D9D85C823B19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Services.EmailAPI", "Ecommerce.Services.EmailAPI\Ecommerce.Services.EmailAPI.csproj", "{AB2D685C-8247-4B95-8AC0-EA6D679FA104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Services.EmailAPI", "Ecommerce.Services.EmailAPI\Ecommerce.Services.EmailAPI.csproj", "{AB2D685C-8247-4B95-8AC0-EA6D679FA104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Services.OrderAPI", "Ecommerce.Services.OrderAPI\Ecommerce.Services.OrderAPI.csproj", "{1C4DE6C9-9DC7-4EB6-93F7-E5134508DD3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{AB2D685C-8247-4B95-8AC0-EA6D679FA104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB2D685C-8247-4B95-8AC0-EA6D679FA104}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB2D685C-8247-4B95-8AC0-EA6D679FA104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4DE6C9-9DC7-4EB6-93F7-E5134508DD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4DE6C9-9DC7-4EB6-93F7-E5134508DD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4DE6C9-9DC7-4EB6-93F7-E5134508DD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4DE6C9-9DC7-4EB6-93F7-E5134508DD3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{D7478337-27D1-4FAE-8EB5-1DD83E9190CE} = {314FDA66-017E-4098-AC24-5DE7D523BCB4}
 		{6582EFC7-7331-45D7-8732-D9D85C823B19} = {450B722F-7828-448E-9CB6-962F6DD779D4}
 		{AB2D685C-8247-4B95-8AC0-EA6D679FA104} = {314FDA66-017E-4098-AC24-5DE7D523BCB4}
+		{1C4DE6C9-9DC7-4EB6-93F7-E5134508DD3D} = {314FDA66-017E-4098-AC24-5DE7D523BCB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E68093C9-FC04-44BD-A1A9-A09A51DC5B08}
