@@ -5,7 +5,7 @@
 
 # dotenv files
 .env
-
+appsettings.Production.json
 # User-specific files
 *.rsuser
 *.suo
@@ -488,3 +488,4 @@ $RECYCLE.BIN/
 /Ecommerce.Services.CouponAPI/appsettings.json
 /Ecommerce.Services.AuthAPI/appsettings.json
 /Ecommerce.Web/appsettings.json
+profile.arm.json
